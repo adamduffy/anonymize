@@ -6,7 +6,7 @@ function sqlRandomFromList(csv) {
 const default_type_values = [
   {
     types: ["character varying", "character", "text"],
-    value: c => `concat('${c.column_name}', id)`
+    value: c => `CONCAT('${c.table_name}-${c.column_name}-', id)`
   },
   {
     types: ["timestamp", "timestamp without time zone"],
@@ -16,7 +16,7 @@ const default_type_values = [
   { types: ["date"], value: "current_date" },
   { types: ["boolean"], value: "false" },
   { types: ["jsonb"], value: "'{}'" },
-  { types: ["ARRAY"], value: "'[]'" }, //i think this should be "ARRAY['']" ? not sure
+  { types: ["ARRAY"], value: "ARRAY['']" },
   { types: ["uuid"], value: "uuid_generate_v4()" }
 ];
 
