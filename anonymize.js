@@ -6,7 +6,7 @@ const usage_info = `# create config.js per documentation
 # preview update statements using:
 # node anonymize.js schema.json
 # execute update statements:
-# psql -d my_database -c "$(node anonymize.js schema.json)"`;
+# psql -d my_database -c "$(node anonymize.js schema.json config.js)"`;
 
 const schema_query_postgres = `SELECT to_json(array_agg(t)) FROM (
   SELECT isc.table_name, isc.column_name, isc.data_type, isc.character_maximum_length as char_max, CASE WHEN(isc.is_nullable='YES') THEN true ELSE false END as is_nullable
