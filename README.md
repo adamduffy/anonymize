@@ -43,4 +43,4 @@ these can be broken down during initial setup and debugging:
 
 1.  `psql -d my_database -t -c "$(node anonymize.js -gen postgres}" > _schema.json` should create a recognizable json file of your schema
 2.  `node anonymize.js _schema.json ./config.js > _updates.sql` should generate a list of update statements.
-3.  `psql -d $1 -c "$(cat _updates.sql)"` should run the updates.
+3.  `psql -d my_database -c "$(cat _updates.sql)"` should run the updates.
