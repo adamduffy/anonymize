@@ -1,0 +1,18 @@
+{
+  "name": "anonymize",
+  "version": "1.0.0",
+  "description": "Anonymize a SQL database",
+  "main": "anonymizer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sql",
+    "mysql",
+    "postgres",
+    "postgresql",
+    "anonymize"
+  ],
+  "author": "Adam Duffy <duffy.adam@gmail.com> (https://github.com/adamduffy/)",
+  "license": "MIT"
+}
