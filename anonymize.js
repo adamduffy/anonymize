@@ -2,11 +2,11 @@
 
 const usage_info = `# create config.js per documentation
 # generate schema.json file:
-# psql -d my_database -t -c "$(node anonymize.js -gen postgres)" > schema.json
+# psql -d my_database -t -c "$(node anonymize.js -gen postgres)" > _schema.json
 # preview update statements using:
-# node anonymize.js schema.json
+# node anonymize.js _schema.json ./config.js > _updates.sql
 # execute update statements:
-# psql -d my_database -c "$(node anonymize.js schema.json config.js)"`;
+# psql -d my_database -c "$(node anonymize.js schema.json ./config.js)"`;
 
 const schema_query_postgres = `SELECT to_json(array_agg(t)) FROM (
   SELECT isc.table_name, isc.column_name, isc.data_type, isc.character_maximum_length as char_max, CASE WHEN(isc.is_nullable='YES') THEN true ELSE false END as is_nullable
@@ -38,9 +38,8 @@ var schema, config;
 try {
   const schemaFilename = process.argv[2];
   const configFilename = process.argv[3];
-  if (!schemaFilename || !configFilename) {
-    throw new Error("Missing schema filename");
-  }
+  if (!schemaFilename) throw new Error("Missing schema filename");
+  if (!configFilename) throw new Error("Missing config filename");
   const fs = require("fs");
   config = require(configFilename);
   schema = JSON.parse(fs.readFileSync(schemaFilename));
