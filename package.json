@@ -1,5 +1,5 @@
 {
-  "name": "anonymize",
+  "name": "@adamduffy/anonymize",
   "version": "1.0.0",
   "description": "Anonymize a SQL database",
   "main": "anonymizer.js",
