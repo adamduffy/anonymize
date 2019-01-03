@@ -4,7 +4,7 @@ Anonymize a SQL database (currently only postgresql)
 
 # simple usage
 
-`./anonymize.sh [databasename] [config_filename]`
+`./anonymize.sh [psql_command] [config_filename]`
 
 see anonymize.sh for implementation details.
 
